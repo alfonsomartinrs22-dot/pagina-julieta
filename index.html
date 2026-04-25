@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Julieta Siragusa Bakery</title>
+  <meta name="description" content="Julieta Siragusa Bakery. Tortas, postres y cafetería artesanal." />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    :root {
+      --bg: #fffaf5;
+      --cream: #f7eadc;
+      --pink: #eec9c7;
+      --rose: #c98787;
+      --brown: #4b3128;
+      --text: #5b4138;
+      --white: #ffffff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      width: 100%;
+      background: rgba(255, 250, 245, 0.94);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #ead8ca;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--brown);
+      white-space: nowrap;
+    }
+
+    .brand img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: var(--cream);
+    }
+
+    .brand span {
+      font-size: 25px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    nav a,
+    .dropdown-btn {
+      color: var(--brown);
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    nav a:hover,
+    .dropdown-btn:hover {
+      color: var(--rose);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 28px;
+      left: 0;
+      min-width: 170px;
+      background: var(--white);
+      border-radius: 18px;
+      box-shadow: 0 18px 40px rgba(75, 49, 40, 0.15);
+      overflow: hidden;
+      border: 1px solid #f0ded3;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 13px 18px;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .hero {
+      max-width: 1200px;
+      margin: auto;
+      padding: 82px 24px 70px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      color: var(--brown);
+      font-size: clamp(42px, 5vw, 72px);
+      line-height: 1.02;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      line-height: 1.8;
+      max-width: 570px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--brown);
+      color: var(--white);
+      text-decoration: none;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 700;
+      transition: 0.25s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: var(--rose);
+      transform: translateY(-2px);
+    }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+      border-radius: 38px;
+      box-shadow: 0 24px 60px rgba(75, 49, 40, 0.18);
+    }
+
+    .badge {
+      position: absolute;
+      left: -18px;
+      bottom: 32px;
+      background: var(--white);
+      padding: 18px 22px;
+      border-radius: 22px;
+      box-shadow: 0 18px 35px rgba(75, 49, 40, 0.16);
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--brown);
+      font-weight: 700;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 70px 24px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-title h2 {
+      color: var(--brown);
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 17px;
+    }
+
+    .catalogo {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border: 1px solid #f0ded3;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 16px 38px rgba(75, 49, 40, 0.08);
+      cursor: pointer;
+      transition: 0.28s;
+      text-align: left;
+    }
+
+    .product-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 22px 48px rgba(75, 49, 40, 0.14);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 23px;
+    }
+
+    .product-info h3 {
+      color: var(--brown);
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .product-info p {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .ver-mas {
+      color: var(--rose);
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 700;
+    }
+
+    .faq-contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .box {
+      background: var(--cream);
+      padding: 34px;
+      border-radius: 30px;
+    }
+
+    .box h2 {
+      color: var(--brown);
+      margin-bottom: 18px;
+      font-size: 34px;
+    }
+
+    .box p,
+    .box li {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .box ul {
+      padding-left: 19px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #7a6057;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(44, 28, 23, 0.45);
+      z-index: 200;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.25s;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .product-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 50vw;
+      max-width: 760px;
+      min-width: 520px;
+      height: 100vh;
+      background: var(--bg);
+      z-index: 300;
+      transform: translateX(100%);
+      transition: 0.35s ease;
+      overflow-y: auto;
+      box-shadow: -24px 0 60px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-panel.active {
+      transform: translateX(0);
+    }
+
+    .panel-content {
+      padding: 30px;
+    }
+
+    .close-btn {
+      position: sticky;
+      top: 18px;
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: none;
+      background: var(--brown);
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .panel-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 18px 0 28px;
+    }
+
+    .panel-gallery img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 24px;
+    }
+
+    .panel-content h2 {
+      color: var(--brown);
+      font-size: 42px;
+      margin-bottom: 14px;
+    }
+
+    .panel-content p {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 26px;
+    }
+
+    .prices {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 22px;
+      border: 1px solid #f0ded3;
+    }
+
+    .prices h3 {
+      color: var(--brown);
+      margin-bottom: 14px;
+      font-size: 25px;
+    }
+
+    .prices table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .prices td {
+      padding: 13px 0;
+      border-bottom: 1px solid #efded3;
+    }
+
+    .prices tr:last-child td {
+      border-bottom: none;
+    }
+
+    .prices td:last-child {
+      text-align: right;
+      font-weight: 700;
+      color: var(--rose);
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .faq-contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .catalogo {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .product-panel {
+        width: 82vw;
+        min-width: unset;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .navbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .brand span {
+        font-size: 21px;
+      }
+
+      .hero {
+        padding-top: 50px;
+      }
+
+      .hero-image img {
+        height: 390px;
+      }
+
+      .badge {
+        left: 18px;
+      }
+
+      .catalogo {
+        grid-template-columns: 1fr;
+      }
+
+      .product-panel {
+        width: 100vw;
+      }
+
+      .panel-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .panel-gallery img {
+        height: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <a class="brand" href="#inicio">
+        <img src="logo.png" alt="Logo Julieta Siragusa Bakery" />
+        <span>Julieta Siragusa Bakery</span>
+      </a>
+
+      <nav>
+        <a href="#inicio">Inicio</a>
+
+        <div class="dropdown">
+          <button class="dropdown-btn">Productos ▾</button>
+          <div class="dropdown-menu">
+            <a href="#tortas">Tortas</a>
+            <a href="#postres">Postres</a>
+            <a href="#cafeteria">Cafetería</a>
+          </div>
+        </div>
+
+        <a href="#preguntas">Preguntas frecuentes</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div>
+        <h1>Pastelería artesanal con diseño y sabor</h1>
+        <p>
+          Tortas personalizadas, postres y propuestas dulces hechas a pedido para cumpleaños,
+          eventos y momentos especiales.
+        </p>
+        <a class="btn" href="#tortas">Ver productos</a>
+      </div>
+
+      <div class="hero-image">
+        <img src="torta-1.jpg" alt="Torta artesanal Julieta Siragusa Bakery" />
+        <div class="badge">Hecho a pedido</div>
+      </div>
+    </section>
+
+    <section id="tortas">
+      <div class="section-title">
+        <h2>Tortas</h2>
+        <p>Tocá una torta para ver más fotos, descripción y precios por tamaño.</p>
+      </div>
+
+      <div class="catalogo">
+        <article class="product-card" onclick="openProduct('tortaChocolate')">
+          <img src="torta-1.jpg" alt="Torta chocolate" />
+          <div class="product-info">
+            <h3>Chocolate & Ganache</h3>
+            <p>Torta húmeda de chocolate con relleno cremoso y decoración artesanal.</p>
+            <span class="ver-mas">Ver detalle</span>
+          </div>
+        </article>
+
+        <article class="product-card" onclick="openProduct('tortaVainilla')">
+          <img src="torta-2.jpg" alt="Torta vainilla y frutos rojos" />
+          <div class="product-info">
+            <h3>Vainilla & Frutos Rojos</h3>
+            <p>Bizcochuelo suave de vainilla, crema y frutos rojos frescos.</p>
+            <span class="ver-mas">Ver detalle</span>
+          </div>
+        </article>
+
+        <article class="product-card" onclick="openProduct('tortaCumple')">
+          <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=900&q=80" alt="Torta cumpleaños personalizada" />
+          <div class="product-info">
+            <h3>Torta Personalizada</h3>
+            <p>Diseños únicos para cumpleaños, eventos y celebraciones especiales.</p>
+            <span class="ver-mas">Ver detalle</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="postres">
+      <div class="section-title">
+        <h2>Postres</h2>
+        <p>Opciones dulces para compartir o regalar.</p>
+      </div>
+
+      <div class="catalogo">
+        <article class="product-card" onclick="openProduct('cheesecake')">
+          <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=900&q=80" alt="Cheesecake frutos rojos" />
+          <div class="product-info">
+            <h3>Cheesecake</h3>
+            <p>Base crocante, crema suave y salsa casera de frutos rojos.</p>
+            <span class="ver-mas">Ver detalle</span>
+          </div>
+        </article>
+
+        <article class="product-card" onclick="openProduct('lemonPie')">
+          <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80" alt="Lemon pie" />
+          <div class="product-info">
+            <h3>Lemon Pie</h3>
+            <p>Masa sablée, crema de limón y merengue italiano.</p>
+            <span class="ver-mas">Ver detalle</span>
+          </div>
+        </article>
+
+        <article class="product-card" onclick="openProduct('brownies')">
+          <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=80" alt="Brownies" />
+          <div class="product-info">
+            <h3>Brownies</h3>
+            <p>Brownies húmedos, chocolatosos y con toppings a elección.</p>
+            <span class="ver-mas">Ver detalle</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="cafeteria">
+      <div class="section-title">
+        <h2>Cafetería</h2>
+        <p>Para acompañar algo dulce con una buena bebida.</p>
+      </div>
+
+      <div class="catalogo">
+        <article class="product-card" onclick="openProduct('cafe')">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80" alt="Café" />
+          <div class="product-info">
+            <h3>Café de especialidad</h3>
+            <p>Opciones calientes y frías para acompañar nuestras tortas y postres.</p>
+            <span class="ver-mas">Ver detalle</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="faq-contact-grid">
+      <div class="box" id="preguntas">
+        <h2>Preguntas frecuentes</h2>
+        <ul>
+          <li>Los pedidos se realizan con anticipación.</li>
+          <li>Las tortas pueden personalizarse según temática, colores y sabores.</li>
+          <li>Los precios pueden variar según decoración y tamaño.</li>
+          <li>Consultá disponibilidad antes de confirmar tu pedido.</li>
+        </ul>
+      </div>
+
+      <div class="box" id="contacto">
+        <h2>Contacto</h2>
+        <p>Escribinos para consultar disponibilidad, sabores y presupuestos personalizados.</p>
+        <a class="btn" href="https://wa.me/5491112345678" target="_blank">Consultar por WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="overlay" id="overlay" onclick="closeProduct()"></div>
+
+  <aside class="product-panel" id="productPanel">
+    <div class="panel-content">
+      <button class="close-btn" onclick="closeProduct()">×</button>
+
+      <div class="panel-gallery" id="panelGallery"></div>
+
+      <h2 id="panelTitle"></h2>
+      <p id="panelDescription"></p>
+
+      <div class="prices">
+        <h3>Precios por tamaño</h3>
+        <table id="priceTable"></table>
+      </div>
+    </div>
+  </aside>
+
+  <footer>
+    <p>© 2026 Julieta Siragusa Bakery. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    const products = {
+      tortaChocolate: {
+        title: 'Chocolate & Ganache',
+        description: 'Torta húmeda de chocolate con relleno de ganache, crema suave y decoración artesanal. Ideal para cumpleaños, reuniones y eventos especiales.',
+        images: ['torta-1.jpg', 'torta-2.jpg'],
+        prices: [
+          ['Chica - 8/10 porciones', '$18.000'],
+          ['Mediana - 14/16 porciones', '$25.000'],
+          ['Grande - 22/24 porciones', '$34.000']
+        ]
+      },
+      tortaVainilla: {
+        title: 'Vainilla & Frutos Rojos',
+        description: 'Bizcochuelo de vainilla, relleno de crema y frutos rojos. Una opción fresca, delicada y equilibrada.',
+        images: ['torta-2.jpg', 'torta-1.jpg'],
+        prices: [
+          ['Chica - 8/10 porciones', '$17.000'],
+          ['Mediana - 14/16 porciones', '$24.000'],
+          ['Grande - 22/24 porciones', '$32.000']
+        ]
+      },
+      tortaCumple: {
+        title: 'Torta Personalizada',
+        description: 'Tortas diseñadas especialmente para cada evento. Se puede elegir temática, colores, relleno, cobertura y detalles decorativos.',
+        images: [
+          'https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1559620192-032c4bc4674e?auto=format&fit=crop&w=900&q=80'
+        ],
+        prices: [
+          ['Chica - 8/10 porciones', '$22.000'],
+          ['Mediana - 14/16 porciones', '$30.000'],
+          ['Grande - 22/24 porciones', '$42.000']
+        ]
+      },
+      cheesecake: {
+        title: 'Cheesecake',
+        description: 'Cheesecake cremoso con base crocante y salsa casera de frutos rojos. Perfecto para mesa dulce o postre familiar.',
+        images: [
+          'https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=80'
+        ],
+        prices: [
+          ['Chico', '$16.500'],
+          ['Mediano', '$23.000'],
+          ['Grande', '$31.000']
+        ]
+      },
+      lemonPie: {
+        title: 'Lemon Pie',
+        description: 'Masa sablée, crema de limón con el punto justo de acidez y merengue italiano dorado.',
+        images: [
+          'https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1519915028121-7d3463d20b13?auto=format&fit=crop&w=900&q=80'
+        ],
+        prices: [
+          ['Chico', '$14.000'],
+          ['Mediano', '$20.000'],
+          ['Grande', '$28.000']
+        ]
+      },
+      brownies: {
+        title: 'Brownies',
+        description: 'Brownies húmedos de chocolate con nueces, dulce de leche o toppings personalizados.',
+        images: [
+          'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1590841609987-4ac211afdde1?auto=format&fit=crop&w=900&q=80'
+        ],
+        prices: [
+          ['Caja x 6', '$8.500'],
+          ['Caja x 12', '$15.000'],
+          ['Caja x 24', '$27.000']
+        ]
+      },
+      cafe: {
+        title: 'Café de especialidad',
+        description: 'Café caliente o frío para acompañar tus tortas y postres favoritos.',
+        images: [
+          'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80',
+          'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=900&q=80'
+        ],
+        prices: [
+          ['Espresso', '$2.000'],
+          ['Latte', '$2.700'],
+          ['Iced Coffee', '$3.000']
+        ]
+      }
+    };
+
+    const overlay = document.getElementById('overlay');
+    const productPanel = document.getElementById('productPanel');
+    const panelGallery = document.getElementById('panelGallery');
+    const panelTitle = document.getElementById('panelTitle');
+    const panelDescription = document.getElementById('panelDescription');
+    const priceTable = document.getElementById('priceTable');
+
+    function openProduct(productId) {
+      const product = products[productId];
+      if (!product) return;
+
+      panelGallery.innerHTML = product.images
+        .map(image => `<img src="${image}" alt="${product.title}" />`)
+        .join('');
+
+      panelTitle.textContent = product.title;
+      panelDescription.textContent = product.description;
+
+      priceTable.innerHTML = product.prices
+        .map(price => `<tr><td>${price[0]}</td><td>${price[1]}</td></tr>`)
+        .join('');
+
+      overlay.classList.add('active');
+      productPanel.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProduct() {
+      overlay.classList.remove('active');
+      productPanel.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeProduct();
+      }
+    });
+  </script>
+</body>
+</html>
