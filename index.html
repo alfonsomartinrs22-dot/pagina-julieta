@@ -176,6 +176,21 @@
       transform: translateY(-2px);
     }
 
+    .btn-secondary {
+      background: var(--rose);
+    }
+
+    .btn-secondary:hover {
+      background: var(--brown);
+    }
+
+    .contact-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
     .hero-image {
       position: relative;
     }
@@ -378,8 +393,9 @@
 
     .slider img {
       width: 100%;
-      height: 340px;
-      object-fit: cover;
+      height: 420px;
+      object-fit: contain;
+      background: var(--cream);
       border-radius: 24px;
     }
 
@@ -471,6 +487,10 @@
     }
 
     @media (max-width: 680px) {
+      header {
+        position: static;
+      }
+
       .navbar {
         align-items: flex-start;
         flex-direction: column;
@@ -511,8 +531,8 @@
         grid-template-columns: 1fr;
       }
 
-      .panel-gallery img {
-        height: 260px;
+      .slider img {
+        height: 320px;
       }
     }
   </style>
@@ -664,7 +684,10 @@
       <div class="box" id="contacto">
         <h2>Contacto</h2>
         <p>Escribinos para consultar disponibilidad, sabores y presupuestos personalizados.</p>
-        <a class="btn" href="https://instagram.com/tuusuario" target="_blank">Ir a Instagram</a>
+        <div class="contact-buttons">
+          <a class="btn" href="https://wa.me/5491112345678" target="_blank">WhatsApp</a>
+          <a class="btn btn-secondary" href="https://instagram.com/tuusuario" target="_blank">Instagram</a>
+        </div>
       </div>
     </section>
   </main>
