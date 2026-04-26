@@ -48,27 +48,23 @@
       border-bottom: 1px solid #e8aebc;
     }
 
-    .navbar {
-      max-width: 1200px;
-      margin: auto;
-      padding: 18px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      background: transparent;
-      border-radius: 0;
-      backdrop-filter: none;
-    }
+.navbar {
+  max-width: 1200px;
+  margin: auto;
+  padding: 18px 12px; /* antes 24px */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: var(--brown);
-      white-space: nowrap;
-    }
+.brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--brown);
+  margin-left: 0;
+}
 
     .brand img {
       width: 52px;
@@ -79,11 +75,12 @@
     }
 
     .brand span {
-      font-size: 32px;
+      font-size: 60px;
       font-weight: 400;
       letter-spacing: 1px;
       font-family: 'Birthstone', cursive;
       color: #803b3b;
+      line-height: 1;
     }
 
     nav {
@@ -112,7 +109,9 @@
     .dropdown {
       position: relative;
     }
-
+.navbar {
+  padding-left: 6px;
+}
     .dropdown-menu {
       opacity: 0;
       visibility: hidden;
@@ -512,7 +511,7 @@
       }
 
       .brand span {
-        font-size: 21px;
+        font-size: 42px;
       }
 
       .hero {
@@ -552,7 +551,6 @@
   <header>
     <div class="navbar">
       <a class="brand" href="#inicio">
-        <img src="logo.jpeg" alt="Logo Julieta Siragusa Bakery" />
         <span>Julieta Siragusa Bakery</span>
       </a>
 
@@ -599,25 +597,25 @@
         <article class="product-card" onclick="openProduct('tortaChocolate')">
           <img src="torta-1.jpeg" alt="Torta chocolate" />
           <div class="product-info">
-            <h3>Chocolate & Ganache</h3>
+            <h3>Carrot Cake</h3>
             <p>Torta húmeda de chocolate con relleno cremoso y decoración artesanal.</p>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
 
         <article class="product-card" onclick="openProduct('tortaVainilla')">
-          <img src="torta-2.jpeg" alt="Torta vainilla y frutos rojos" />
+          <img src="Matilda1.jpg" alt="Torta vainilla y frutos rojos" />
           <div class="product-info">
-            <h3>Vainilla & Frutos Rojos</h3>
+            <h3>Torta Matilda</h3>
             <p>Bizcochuelo suave de vainilla, crema y frutos rojos frescos.</p>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
 
         <article class="product-card" onclick="openProduct('tortaCumple')">
-          <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=900&q=80" alt="Torta cumpleaños personalizada" />
+          <img src="KeylimePie.jpg" alt="Key Lime Pie" />
           <div class="product-info">
-            <h3>Torta Personalizada</h3>
+            <h3>Key Lime Pie</h3>
             <p>Diseños únicos para cumpleaños, eventos y celebraciones especiales.</p>
             <span class="ver-mas">Ver detalle</span>
           </div>
