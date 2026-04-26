@@ -83,6 +83,42 @@
       line-height: 1;
     }
 
+    .hamburger {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: none;
+      background: var(--cream);
+      border-radius: 14px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      box-shadow: 0 8px 20px rgba(75, 49, 40, 0.12);
+    }
+
+    .hamburger span {
+      display: block;
+      width: 23px;
+      height: 2px;
+      background: #803b3b;
+      border-radius: 999px;
+      transition: 0.25s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
     nav {
       display: flex;
       align-items: center;
@@ -497,35 +533,67 @@
 
     @media (max-width: 680px) {
       header {
-        position: static;
+        position: sticky;
       }
 
       .navbar {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      nav {
-        flex-wrap: wrap;
-        gap: 16px;
-      }
-
-      .navbar {
-        flex-direction: row;
+        position: relative;
         align-items: center;
-        justify-content: space-between;
-        gap: 14px;
-        padding: 10px 14px;
-      }
-
-      .brand img {
-        display: block;
-        width: 58px;
-        height: 58px;
+        flex-direction: row;
+        padding: 14px 14px;
       }
 
       .brand span {
+        font-size: 38px;
+      }
+
+      .hamburger {
+        display: flex;
+        flex-shrink: 0;
+      }
+
+      nav {
         display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 14px;
+        right: 14px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: var(--cream);
+        border: 1px solid #e8aebc;
+        border-radius: 22px;
+        padding: 12px;
+        box-shadow: 0 18px 40px rgba(75, 49, 40, 0.18);
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      nav a,
+      .dropdown-btn {
+        width: 100%;
+        text-align: left;
+        padding: 13px 14px;
+      }
+
+      .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        display: none;
+        min-width: 100%;
+        box-shadow: none;
+        border-radius: 14px;
+        margin-top: 4px;
+      }
+
+      .dropdown:hover .dropdown-menu,
+      .dropdown:focus-within .dropdown-menu {
+        display: block;
       }
 
       .hero {
@@ -565,11 +633,16 @@
   <header>
     <div class="navbar">
       <a class="brand" href="#inicio">
-        <img src="logo.jpeg" alt="Logo Julieta Siragusa Bakery" />
         <span>Julieta Siragusa Bakery</span>
       </a>
 
-      <nav>
+      <button class="hamburger" type="button" aria-label="Abrir menú" aria-expanded="false" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="mainNav">
         <a href="#inicio">Inicio</a>
 
         <div class="dropdown">
@@ -741,6 +814,39 @@
   </footer>
 
   <script>
+    function toggleMenu() {
+      const nav = document.getElementById('mainNav');
+      const hamburger = document.querySelector('.hamburger');
+      const isOpen = nav.classList.toggle('active');
+
+      hamburger.classList.toggle('active', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
+    document.addEventListener('click', function(event) {
+      const nav = document.getElementById('mainNav');
+      const hamburger = document.querySelector('.hamburger');
+
+      if (!nav || !hamburger) return;
+      if (!nav.classList.contains('active')) return;
+      if (nav.contains(event.target) || hamburger.contains(event.target)) return;
+
+      nav.classList.remove('active');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+
+    document.querySelectorAll('#mainNav a').forEach(link => {
+      link.addEventListener('click', function() {
+        const nav = document.getElementById('mainNav');
+        const hamburger = document.querySelector('.hamburger');
+
+        nav.classList.remove('active');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
     const products = {
       tortaChocolate: {
         title: 'Carrot Cake',
