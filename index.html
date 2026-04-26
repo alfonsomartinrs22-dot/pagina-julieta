@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Julieta Siragusa Bakery</title>
-  <meta name="description" content="Julieta Siragusa Bakery. Tortas y postres artesanales." />
+  <meta name="description" content="Julieta Siragusa Bakery. Tortas, postres y cafetería artesanal." />
 
   <style>
     * {
@@ -35,22 +35,30 @@
 
     header {
       width: 100%;
-      background: rgba(255, 250, 245, 0.94);
-      backdrop-filter: blur(12px);
+      background: repeating-linear-gradient(
+        90deg,
+        #f5d0d6,
+        #f5d0d6 40px,
+        #fff5f7 40px,
+        #fff5f7 80px
+      );
       position: sticky;
       top: 0;
       z-index: 100;
-      border-bottom: 1px solid #ead8ca;
+      border-bottom: 1px solid #e8c9cf;
     }
 
     .navbar {
       max-width: 1200px;
       margin: auto;
-      padding: 16px 24px;
+      padding: 18px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 24px;
+      background: rgba(255,255,255,0.75);
+      border-radius: 40px;
+      backdrop-filter: blur(6px);
     }
 
     .brand {
@@ -71,9 +79,11 @@
     }
 
     .brand span {
-      font-size: 25px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      font-family: 'Birthstone', cursive;
+      color: #7a3b3b;
     }
 
     nav {
@@ -84,7 +94,7 @@
 
     nav a,
     .dropdown-btn {
-      color: var(--brown);
+      color: #7a3b3b;
       text-decoration: none;
       font-size: 16px;
       font-weight: 600;
@@ -536,12 +546,13 @@
       }
     }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Birthstone&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
     <div class="navbar">
       <a class="brand" href="#inicio">
-        <img src="logo.pneg" alt="Logo Julieta Siragusa Bakery" />
+        <img src="logo.png" alt="Logo Julieta Siragusa Bakery" />
         <span>Julieta Siragusa Bakery</span>
       </a>
 
@@ -553,7 +564,7 @@
           <div class="dropdown-menu">
             <a href="#tortas">Tortas</a>
             <a href="#postres">Postres</a>
-            <a href="#cafeteria">Bakery</a>
+            <a href="#cafeteria">Cafetería</a>
           </div>
         </div>
 
@@ -566,15 +577,17 @@
   <main>
     <section class="hero" id="inicio">
       <div>
-        <h1>Pastelería con sabor y calidad artesanal</h1>
+        <h1>Pastelería artesanal con diseño y sabor</h1>
         <p>
-          Tortas personalizadas, postres y propuestas dulces hechas a pedido.
+          Tortas personalizadas, postres y propuestas dulces hechas a pedido para cumpleaños,
+          eventos y momentos especiales.
         </p>
         <a class="btn" href="#tortas">Ver productos</a>
       </div>
 
       <div class="hero-image">
-        <img src="torta-1.jpeg" alt="Torta artesanal Julieta Siragusa Bakery" />
+        <img src="torta-1.jpg" alt="Torta artesanal Julieta Siragusa Bakery" />
+        <div class="badge">Hecho a pedido</div>
       </div>
     </section>
 
@@ -586,16 +599,16 @@
 
       <div class="catalogo">
         <article class="product-card" onclick="openProduct('tortaChocolate')">
-          <img src="torta-1.jpeg" alt="Torta chocolate" />
+          <img src="torta-1.jpg" alt="Torta chocolate" />
           <div class="product-info">
-            <h3>Carrot Cake</h3>
-            <p>Torta húmeda de ch.</p>
+            <h3>Chocolate & Ganache</h3>
+            <p>Torta húmeda de chocolate con relleno cremoso y decoración artesanal.</p>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
 
         <article class="product-card" onclick="openProduct('tortaVainilla')">
-          <img src="torta-2.jpeg" alt="Torta vainilla y frutos rojos" />
+          <img src="torta-2.jpg" alt="Torta vainilla y frutos rojos" />
           <div class="product-info">
             <h3>Vainilla & Frutos Rojos</h3>
             <p>Bizcochuelo suave de vainilla, crema y frutos rojos frescos.</p>
@@ -617,7 +630,7 @@
     <section id="postres">
       <div class="section-title">
         <h2>Postres</h2>
-        <p>Opciones dulces para compartir en familia.</p>
+        <p>Opciones dulces para compartir o regalar.</p>
       </div>
 
       <div class="catalogo">
@@ -652,8 +665,8 @@
 
     <section id="cafeteria">
       <div class="section-title">
-        <h2>Bakery</h2>
-        <p>Dulce y salado.</p>
+        <h2>Cafetería</h2>
+        <p>Para acompañar algo dulce con una buena bebida.</p>
       </div>
 
       <div class="catalogo">
@@ -683,8 +696,8 @@
         <h2>Contacto</h2>
         <p>Escribinos para consultar disponibilidad, sabores y presupuestos personalizados.</p>
         <div class="contact-buttons">
-          <a class="btn" href="https://wa.me/5491168363955" target="_blank">WhatsApp</a>
-          <a class="btn btn-secondary" href="https://instagram.com/julisiragusa.bakery" target="_blank">Instagram</a>
+          <a class="btn" href="https://wa.me/5491112345678" target="_blank">WhatsApp</a>
+          <a class="btn btn-secondary" href="https://instagram.com/tuusuario" target="_blank">Instagram</a>
         </div>
       </div>
     </section>
@@ -719,9 +732,9 @@
   <script>
     const products = {
       tortaChocolate: {
-        title: 'Carrot Cake',
-        description: 'Bizcochuelo humedo de zanahoria',
-        images: ['torta-1.jpeg', 'torta-2.jpeg'],
+        title: 'Chocolate & Ganache',
+        description: 'Torta húmeda de chocolate con relleno de ganache, crema suave y decoración artesanal. Ideal para cumpleaños, reuniones y eventos especiales.',
+        images: ['torta-1.jpg', 'torta-2.jpg'],
         prices: [
           ['Chica - 8/10 porciones', '$18.000'],
           ['Mediana - 14/16 porciones', '$25.000'],
@@ -731,7 +744,7 @@
       tortaVainilla: {
         title: 'Vainilla & Frutos Rojos',
         description: 'Bizcochuelo de vainilla, relleno de crema y frutos rojos. Una opción fresca, delicada y equilibrada.',
-        images: ['torta-2.jpeg', 'torta-1.jpeg'],
+        images: ['torta-2.jpg', 'torta-1.jpg'],
         prices: [
           ['Chica - 8/10 porciones', '$17.000'],
           ['Mediana - 14/16 porciones', '$24.000'],
