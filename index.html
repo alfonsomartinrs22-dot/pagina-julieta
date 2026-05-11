@@ -717,11 +717,19 @@
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
-        <article class="product-card" onclick="openProduct('tortaChocolate')">
-          <img src="torta-1.jpeg" alt="Torta chocolate" />
+        <article class="product-card" onclick="openProduct('ricota')">
+          <img src="ricota1.jpeg" alt="Ricota" />
           <div class="product-info">
             <h3>Carrot Cake</h3>
-            <p>Torta húmeda y especiada con una miga suave y dulce, rellena con cream cheese que le aporta un toque ácido equilibrando la dulzura.</p>
+            <p>Base de masa sablée con relleno cremoso de ricota.</p>
+            <span class="ver-mas">Ver detalle</span>
+          </div>
+        </article>
+        <article class="product-card" onclick="openProduct('manzana')">
+          <img src="manzana1.jpeg" alt="Ricota" />
+          <div class="product-info">
+            <h3>Crumble de Manzana</h3>
+            <p>Base de masa sablé y un relleno de manzanas suaves especiadas</p>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
@@ -743,11 +751,10 @@
       </div>
 
       <div class="catalogo">
-        <article class="product-card" onclick="openProduct('cheesecake')">
-          <img src="cheesecake-1.jpg" alt="Cheesecake frutos rojos" />
+        <article class="product-card" onclick="openProduct('tiramisu')">
+          <img src="tiramisu1.jpeg" alt="Tiramisú" />
           <div class="product-info">
-            <h3>Cheesecake</h3>
-            <p>Base crocante, crema suave y salsa casera de frutos rojos.</p>
+            <h3>Tiramisú</h3>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
@@ -761,11 +768,11 @@
           </div>
         </article>
 
-        <article class="product-card" onclick="openProduct('brownies')">
-          <img src="brownies-1.jpg" alt="Brownies" />
+        <article class="product-card" onclick="openProduct('postreLimon')">
+          <img src=".jpg" alt="Postre de Limón" />
           <div class="product-info">
-            <h3>Brownies</h3>
-            <p>Brownies húmedos, chocolatosos y con toppings a elección.</p>
+            <h3>Postre de limón</h3>
+            <p>Capas de galletitas de vainilla con una mousse de limón decorada con chocolate rallado.</p>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
@@ -779,11 +786,25 @@
       </div>
 
       <div class="catalogo">
-        <article class="product-card" onclick="openProduct('cafe')">
-          <img src="cafe-1.jpg" alt="Café" />
+        <article class="product-card" onclick="openProduct('brownie')">
+          <img src="brownie1.jpeg" alt="Brownie" />
           <div class="product-info">
-            <h3>Proximamente</h3>
-            <p>Proximamente</p>
+            <h3>Brownie</h3>
+            <p>Base de brownie con dulce de leche, crema batida y frutos rojos/frutilla</p>
+            <span class="ver-mas">Ver detalle</span>
+          </div>
+        </article>
+        <article class="product-card" onclick="openProduct('scondequeso')">
+          <img src=".jpeg" alt="Scon de queso" />
+          <div class="product-info">
+            <h3>Scon de queso</h3>
+            <span class="ver-mas">Ver detalle</span>
+          </div>
+        </article>
+        <article class="product-card" onclick="openProduct('budines')">
+          <img src="budinLimon1.jpeg" alt="Budines" />
+          <div class="product-info">
+            <h3>Budines</h3>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
@@ -893,6 +914,44 @@
           ['Grande - 24cm de diámetro rinde para 25 personas', '$73.000']
         ]
       },
+      ricota: {
+        title: 'Torta de ricota',
+        description: 'Base de masa sablée con relleno cremoso de ricota.',
+        images: ['ricota1.jpeg', 'ricota2.jpeg'],
+        prices: [
+          ['24cm de diámetro', '$60.000']
+        ]
+      },
+      manzana: {
+        title: 'Crumble de Manzana',
+        description: 'Base de masa sablé y un relleno de manzanas suaves especiadas.',
+        images: ['manzana1.jpeg', 'manzana2.jpeg', 'manzana3.jpeg'],
+        prices: [
+          ['24cm de diámetro', '$']
+        ]
+      },
+      brownie: {
+        title: 'Brownie',
+        description: 'Base de brownie con dulce de leche, crema batida y frutos rojos/frutillas',
+        images: ['brownie1.jpeg'],
+        prices: [
+          ['.', '$']
+        ]
+      },
+      scondequeso: {
+        title: 'Scon de queso',
+        images: ['sconqueso1.jpeg', 'sconqueso2.jpeg'],
+        prices: [
+          ['.', '$']
+        ]
+      },
+      budines: {
+        title: 'Budines',
+        images: ['budinLimon1.jpeg'],
+        prices: [
+          ['Budin de limón', '$']
+        ]
+      },
       tortaVainilla: {
         title: 'Torta Matilda',
         description: 'Bizcochuelo húmedo con sabor intenso a chocolate y relleno con una ganache suave de chocolate semi amargo y cubierta con una más intensa',
@@ -913,17 +972,13 @@
           ['24cm de diámetro', '$47.000']
         ]
       },
-      cheesecake: {
-        title: 'Cheesecake',
-        description: 'Cheesecake cremoso con base crocante y salsa casera de frutos rojos. Perfecto para mesa dulce o postre familiar.',
+      tiramisu: {
+        title: 'Tiramisú',
         images: [
-          'cheesecake-1.jpg',
-          'cheesecake-2.jpg'
+          'tiramisu1.jpeg'
         ],
         prices: [
-          ['Chico', '$16.500'],
-          ['Mediano', '$23.000'],
-          ['Grande', '$31.000']
+          ['Porción', '$']
         ]
       },
       lemonPie: {
@@ -939,22 +994,20 @@
           ['Grande', '$28.000']
         ]
       },
-      brownies: {
-        title: 'Brownies',
-        description: 'Brownies húmedos de chocolate con nueces, dulce de leche o toppings personalizados.',
+      postreLimon: {
+        title: 'Postre de Limón',
+        description: 'Capas de galletitas de vainilla con una mousse de limón decorada con chocolate rallado.',
         images: [
-          'brownies-1.jpg',
-          'brownies-2.jpg'
+          '.jpg'
         ],
         prices: [
-          ['Caja x 6', '$8.500'],
-          ['Caja x 12', '$15.000'],
-          ['Caja x 24', '$27.000']
+          ['Individual', '$'],
+          ['Para compartir rinde hasta 15 porciones', '$']
         ]
       },
       cafe: {
-        title: 'Café de especialidad',
-        description: 'Café caliente o frío para acompañar tus tortas y postres favoritos.',
+        title: '.',
+        description: '.',
         images: [
           'cafe-1.jpg',
           'cafe-2.jpg'
