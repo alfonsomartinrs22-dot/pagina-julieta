@@ -679,6 +679,7 @@
       <div class="section-title">
         <h2>Tortas</h2>
         <p>Tocá una torta para ver más fotos, descripción y precios por tamaño.</p>
+        <p>Encargá tu torta con 48hs de anticipación.</p>
       </div>
 
       <div class="catalogo">
@@ -686,7 +687,7 @@
           <img src="torta-1.jpeg" alt="Torta chocolate" />
           <div class="product-info">
             <h3>Carrot Cake</h3>
-            <p>Torta húmeda de chocolate con relleno cremoso y decoración artesanal.</p>
+            <p>Torta húmeda y especiada con una miga suave y dulce, rellena con cream cheese que le aporta un toque ácido equilibrando la dulzura.</p>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
@@ -704,7 +705,31 @@
           <img src="KeylimePie.jpg" alt="Key Lime Pie" />
           <div class="product-info">
             <h3>Key Lime Pie</h3>
-            <p>Diseños únicos para cumpleaños, eventos y celebraciones especiales.</p>
+            <p>Base crocante de vainilla y un relleno cremoso de lima, con el equilibrio perfecto entre lo dulce y cítrico, decorada con crema batida.</p>
+            <span class="ver-mas">Ver detalle</span>
+          </div>
+        </article>
+        <article class="product-card" onclick="openProduct('redVelvet')">
+          <img src="redVelvet1.jpeg" alt="Red Velvet" />
+          <div class="product-info">
+            <h3>Red Velvet</h3>
+            <p>Torta húmeda y especiada con una miga suave y dulce, rellena con cream cheese que le aporta un toque ácido equilibrando la dulzura.</p>
+            <span class="ver-mas">Ver detalle</span>
+          </div>
+        </article>
+        <article class="product-card" onclick="openProduct('tortaChocolate')">
+          <img src="torta-1.jpeg" alt="Torta chocolate" />
+          <div class="product-info">
+            <h3>Carrot Cake</h3>
+            <p>Torta húmeda y especiada con una miga suave y dulce, rellena con cream cheese que le aporta un toque ácido equilibrando la dulzura.</p>
+            <span class="ver-mas">Ver detalle</span>
+          </div>
+        </article>
+        <article class="product-card" onclick="openProduct('tortaChocolate')">
+          <img src="torta-1.jpeg" alt="Torta chocolate" />
+          <div class="product-info">
+            <h3>Carrot Cake</h3>
+            <p>Torta húmeda y especiada con una miga suave y dulce, rellena con cream cheese que le aporta un toque ácido equilibrando la dulzura.</p>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
@@ -853,19 +878,29 @@
         description: 'Torta húmeda de chocolate con relleno de ganache, crema suave y decoración artesanal. Ideal para cumpleaños, reuniones y eventos especiales.',
         images: ['torta-1.jpeg', 'torta-2.jpeg'],
         prices: [
-          ['Chica - 8/10 porciones', '$18.000'],
-          ['Mediana - 14/16 porciones', '$25.000'],
-          ['Grande - 22/24 porciones', '$34.000']
+          ['Chica - 18cm de diámetro rinde para 10/15 personas', '$60.000'],
+          ['Mediana - 22cm de diámetro rinde para 20 personas', '$70.000'],
+          ['Grande - 24cm de diámetro rinde para 25 personas', '$76.000']
+        ]
+      },
+      redVelvet: {
+        title: 'Red Velvet',
+        description: 'Torta húmeda y aterciopelada, con un sabor sutil a cacao y un relleno de cream cheese.',
+        images: ['redVelvet1.jpeg', 'redVelvet2.jpeg'],
+        prices: [
+          ['Chica - 18cm de diámetro rinde para 10/15 personas', '$60.000'],
+          ['Mediana - 22cm de diámetro rinde para 20 personas', '$66.000'],
+          ['Grande - 24cm de diámetro rinde para 25 personas', '$73.000']
         ]
       },
       tortaVainilla: {
         title: 'Torta Matilda',
-        description: 'Bizcochuelo de vainilla, relleno de crema y frutos rojos. Una opción fresca, delicada y equilibrada.',
+        description: 'Bizcochuelo húmedo con sabor intenso a chocolate y relleno con una ganache suave de chocolate semi amargo y cubierta con una más intensa',
         images: ['Matilda1.jpg', 'Matilda2.jpg', 'Matilda3.jpg'],
         prices: [
-          ['Chica - 8/10 porciones', '$17.000'],
-          ['Mediana - 14/16 porciones', '$24.000'],
-          ['Grande - 22/24 porciones', '$32.000']
+          ['Chica - 20cm de diámetro rinde para 10/15 personas', '$60.000'],
+          ['Mediana - 22cm de diámetro rinde para 20 personas', '$66.000'],
+          ['Grande - 24cm de diámetro rinde para 25 personas', '$73.000']
         ]
       },
       tortaCumple: {
@@ -875,9 +910,7 @@
           'KeylimePie.jpg'
         ],
         prices: [
-          ['Chica - 8/10 porciones', '$22.000'],
-          ['Mediana - 14/16 porciones', '$30.000'],
-          ['Grande - 22/24 porciones', '$42.000']
+          ['24cm de diámetro', '$47.000']
         ]
       },
       cheesecake: {
