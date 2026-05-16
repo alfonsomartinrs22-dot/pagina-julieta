@@ -733,6 +733,48 @@
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
+        </article>
+        <article class="product-card" onclick="openProduct('Chocotorta')">
+          <img src=".jpeg" alt="Chocotorta" />
+          <div class="product-info">
+            <h3>Chocotorta</h3>
+            <p>Base de galletitas y un relleno de dulce de leche con queso crema.</p>
+            <span class="ver-mas">Ver detalle</span>
+          </div>
+        </article>
+        </article>
+        <article class="product-card" onclick="openProduct('Cheesecake')">
+          <img src=".jpeg" alt="Cheesecake" />
+          <div class="product-info">
+            <h3>Torta Cheesecake</h3>
+            <p>Base de vainilla, con un relleno cremoso de queso crema y una reducción de frutillas</p>
+            <span class="ver-mas">Ver detalle</span>
+          </div>
+        </article>
+        <article class="product-card" onclick="openProduct('Marquise')">
+          <img src=".jpeg" alt="Marquise" />
+          <div class="product-info">
+            <h3>Torta Marquise</h3>
+            <p>Base húmeda de chocolate, decorada con dulce de leche y crema batida.</p>
+            <span class="ver-mas">Ver detalle</span>
+          </div>
+        </article>
+        <article class="product-card" onclick="openProduct('bananaSplit')">
+          <img src=".jpeg" alt="bananaSplit" />
+          <div class="product-info">
+            <h3>Torta Banana Split</h3>
+            <p>Base de galletitas de vainilla, con dulce de leche, crema de avellanas, bananas y crema batida.</p>
+            <span class="ver-mas">Ver detalle</span>
+          </div>
+        </article>
+        <article class="product-card" onclick="openProduct('sableAlmendras')">
+          <img src=".jpeg" alt="sableAlmendras" />
+          <div class="product-info">
+            <h3>Torta Sablé de almendras:</h3>
+            <p>Tres capas de masa sablé con almendras trituradas y rellena de dulce de leche, crema batida y frutos rojos/frutillas.</p>
+            <span class="ver-mas">Ver detalle</span>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -989,7 +1031,58 @@
           ['2', '$2'],
           ['3', '$3']
         ]
+      },
+            Chocotorta: {
+        title: 'Chocotorta',
+        description: 'Base de galletitas y un relleno de dulce de leche con queso crema.',
+        images: [
+          '.jpg'
+        ],
+        prices: [
+          ['Para compartir rinde hasta 20 porciones', '$']
+        ]
+      },
+            Cheesecake: {
+        title: 'Torta Cheesecake',
+        description: 'Base de vainilla, con un relleno cremoso de queso crema y una reducción de frutillas.',
+        images: [
+          '.jpg'
+        ],
+        prices: [
+          ['', '$']
+        ]
+      },
+            Marquise: {
+        title: 'Torta Marquise',
+        description: 'Base húmeda de chocolate, decorada con dulce de leche y crema batida.',
+        images: [
+          '.jpg'
+        ],
+        prices: [
+          ['', '$']
+        ]
+      },
+            bananaSplit: {
+        title: 'Torta Banana Split',
+        description: 'Base de galletitas de vainilla, con dulce de leche, crema de avellanas, bananas y crema batida.',
+        images: [
+          '.jpg'
+        ],
+        prices: [
+          ['', '$']
+        ]
+      },
+            sableAlmendras: {
+        title: 'Torta Sablé de almendras',
+        description: 'Tres capas de masa sablé con almendras trituradas y rellena de dulce de leche, crema batida y frutos rojos/frutillas.',
+        images: [
+          '.jpg'
+        ],
+        prices: [
+          ['', '$']
+        ]
       }
+
     };
 
     const overlay = document.getElementById('overlay');
