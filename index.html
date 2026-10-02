@@ -306,8 +306,9 @@
     }
 
     .product-card img {
+      display: block;
       width: 100%;
-      height: 260px;
+      aspect-ratio: 1 / 1;
       object-fit: cover;
     }
 
@@ -494,25 +495,23 @@
       font-size: 25px;
     }
 
-    .prices table {
-      width: 100%;
-      border-collapse: collapse;
+    .prices[hidden] {
+      display: none;
+    }
+
+    .prices ul {
+      list-style: none;
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    .prices td {
+    .prices li {
       padding: 13px 0;
       border-bottom: 1px solid #efded3;
+      line-height: 1.5;
     }
 
-    .prices tr:last-child td {
+    .prices li:last-child {
       border-bottom: none;
-    }
-
-    .prices td:last-child {
-      text-align: right;
-      font-weight: 700;
-      color: var(--rose);
     }
 
     @media (max-width: 980px) {
@@ -544,7 +543,8 @@
       }
 
       .brand span {
-        font-size: 38px;
+        font-size: 34px;
+        white-space: nowrap;
       }
 
       .hamburger {
@@ -608,22 +608,149 @@
         left: 18px;
       }
 
+      section {
+        padding: 44px 16px;
+      }
+
+      .section-title {
+        margin-bottom: 22px;
+      }
+
+      .section-title h2 {
+        font-size: 32px;
+        margin-bottom: 8px;
+      }
+
+      .section-title p {
+        font-size: 15px;
+        line-height: 1.5;
+      }
+
+      /* Catálogo en formato listado */
       .catalogo {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        background: var(--white);
+        border: 1px solid #f0ded3;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: 0 12px 30px rgba(75, 49, 40, 0.08);
       }
 
+      .product-card {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 12px;
+        border: none;
+        border-bottom: 1px solid #f0ded3;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .product-card:last-child {
+        border-bottom: none;
+      }
+
+      .product-card:hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      .product-card:active {
+        background: var(--cream);
+      }
+
+      .product-card img {
+        width: 92px;
+        height: 92px;
+        flex-shrink: 0;
+        border-radius: 16px;
+        background: var(--cream);
+      }
+
+      .product-info {
+        flex: 1;
+        min-width: 0;
+        padding: 0;
+      }
+
+      .product-info h3 {
+        font-size: 19px;
+        margin-bottom: 4px;
+      }
+
+      .product-info p {
+        font-size: 14px;
+        line-height: 1.4;
+        margin-bottom: 6px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .ver-mas {
+        font-size: 13px;
+      }
+
+      .ver-mas::after {
+        content: ' ›';
+      }
+
+      /* Detalle como hoja que sube desde abajo */
       .product-panel {
-        width: 94vw;
-        max-height: 90vh;
-        border-radius: 24px;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        max-width: none;
+        max-height: 92vh;
+        border-radius: 24px 24px 0 0;
+        transform: translateY(100%);
       }
 
-      .panel-gallery {
-        grid-template-columns: 1fr;
+      .product-panel.active {
+        transform: translateY(0);
+      }
+
+      .panel-content {
+        padding: 18px 16px 28px;
+      }
+
+      .panel-content h2 {
+        font-size: 30px;
+      }
+
+      .panel-content p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      .slider {
+        margin: 12px 0 20px;
       }
 
       .slider img {
-        height: 320px;
+        height: 300px;
+      }
+
+      .prices {
+        padding: 16px;
+      }
+
+      .prices li {
+        font-size: 14px;
+      }
+
+      .box {
+        padding: 26px 20px;
+      }
+
+      .box h2 {
+        font-size: 28px;
       }
     }
   </style>
@@ -678,13 +805,13 @@
     <section id="tortas">
       <div class="section-title">
         <h2>Tortas</h2>
-        <p>Tocá una torta para ver más fotos, descripción y precios por tamaño.</p>
+        <p>Tocá una torta para ver más fotos y su descripción.</p>
         <p>Encargá tu torta con 48hs de anticipación.</p>
       </div>
 
       <div class="catalogo">
         <article class="product-card" onclick="openProduct('tortaChocolate')">
-          <img src="torta-1.jpeg" alt="Torta chocolate" />
+          <img src="torta-1.jpeg" style="object-position: 50% 70%" alt="Torta chocolate" />
           <div class="product-info">
             <h3>Carrot Cake</h3>
             <p>Torta húmeda y especiada con una miga suave y dulce, rellena con cream cheese que le aporta un toque ácido equilibrando la dulzura.</p>
@@ -717,23 +844,6 @@
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
-        <article class="product-card" onclick="openProduct('ricota')">
-          <img src="ricota1.jpeg" alt="Ricota" />
-          <div class="product-info">
-            <h3>Torta de Ricota</h3>
-            <p>Base de masa sablée con relleno cremoso de ricota.</p>
-            <span class="ver-mas">Ver detalle</span>
-          </div>
-        </article>
-        <article class="product-card" onclick="openProduct('manzana')">
-          <img src="manzana1.jpeg" alt="manzana" />
-          <div class="product-info">
-            <h3>Crumble de Manzana</h3>
-            <p>Base de masa sablé y un relleno de manzanas suaves especiadas</p>
-            <span class="ver-mas">Ver detalle</span>
-          </div>
-        </article>
-        </article>
         <article class="product-card" onclick="openProduct('Chocotorta')">
           <img src=".jpeg" alt="Chocotorta" />
           <div class="product-info">
@@ -742,9 +852,8 @@
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
-        </article>
         <article class="product-card" onclick="openProduct('Cheesecake')">
-          <img src="cheescake1.jpeg" alt="Cheesecake" />
+          <img src="cheescake1.jpeg" style="object-position: 50% 75%" alt="Cheesecake" />
           <div class="product-info">
             <h3>Cheesecake</h3>
             <p>Base de vainilla, con un relleno cremoso de queso crema y una reducción de frutillas</p>
@@ -752,7 +861,7 @@
           </div>
         </article>
         <article class="product-card" onclick="openProduct('Marquise')">
-          <img src="marquise1.jpeg" alt="Marquise" />
+          <img src="marquise3.jpg" style="object-position: 45% 78%" alt="Marquise" />
           <div class="product-info">
             <h3>Marquise</h3>
             <p>Base húmeda de chocolate, decorada con dulce de leche y crema batida.</p>
@@ -767,11 +876,27 @@
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
-        <article class="product-card" onclick="openProduct('sableAlmendras')">
-          <img src=".jpeg" alt="sableAlmendras" />
+        <article class="product-card" onclick="openProduct('chaja')">
+          <img src="chaja1.jpg" style="object-position: 55% 55%" alt="Torta Chajá" />
           <div class="product-info">
-            <h3>Torta Sablé de almendras:</h3>
-            <p>Tres capas de masa sablé con almendras trituradas y rellena de dulce de leche, crema batida y frutos rojos/frutillas.</p>
+            <h3>Torta Chajá</h3>
+            <p>Bizcochuelo de vainilla con crema chantilly, duraznos y merengue crocante, cubierta con crema y trozos de merengue.</p>
+            <span class="ver-mas">Ver detalle</span>
+          </div>
+        </article>
+        <article class="product-card" onclick="openProduct('tortaBrownie')">
+          <img src="tortaBrownie1.jpg" style="object-position: 40% 85%" alt="Torta Brownie" />
+          <div class="product-info">
+            <h3>Torta Brownie</h3>
+            <p>Base húmeda de brownie con dulce de leche, crema batida y frutillas frescas.</p>
+            <span class="ver-mas">Ver detalle</span>
+          </div>
+        </article>
+        <article class="product-card" onclick="openProduct('maracuya')">
+          <img src="maracuya1.jpg" alt="Tarta de maracuyá" />
+          <div class="product-info">
+            <h3>Tarta de maracuyá</h3>
+            <p>Base de masa sablé con un relleno cremoso de maracuyá, fresco y levemente ácido.</p>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
@@ -786,14 +911,14 @@
 
       <div class="catalogo">
         <article class="product-card" onclick="openProduct('tiramisu')">
-          <img src="tiramisu1.jpeg" alt="Tiramisú" />
+          <img src="tiramisu1.jpeg" style="object-position: 50% 75%" alt="Tiramisú" />
           <div class="product-info">
             <h3>Tiramisú</h3>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
         <article class="product-card" onclick="openProduct('postreLimon')">
-          <img src="limon1.jpeg" alt="Postre de Limón" />
+          <img src="limon3.jpg" style="object-position: 50% 85%" alt="Postre de Limón" />
           <div class="product-info">
             <h3>Postre de limón</h3>
             <p>Capas de galletitas de vainilla con una mousse de limón decorada con chocolate rallado.</p>
@@ -840,9 +965,8 @@
         <h2>Preguntas frecuentes</h2>
         <ul>
           <li>Los pedidos se realizan con anticipación.</li>
-          <li>Las tortas pueden personalizarse según temática, colores y sabores.</li>
-          <li>Los precios pueden variar según decoración y tamaño.</li>
-          <li>Consultá disponibilidad antes de confirmar tu pedido.</li>
+          <li>Los precios pueden variar según su tamaño.</li>
+          <li>Para confirmar tu pedido, solicito una seña del 50%.</li>
         </ul>
       </div>
 
@@ -872,9 +996,9 @@
       <h2 id="panelTitle"></h2>
       <p id="panelDescription"></p>
 
-      <div class="prices">
-        <h3>.</h3>
-        <table id="priceTable"></table>
+      <div class="prices" id="sizesBox">
+        <h3 id="sizesTitle">Tamaños</h3>
+        <ul id="sizesList"></ul>
       </div>
     </div>
   </aside>
@@ -922,72 +1046,40 @@
         title: 'Carrot Cake',
         description: 'Torta húmeda de chocolate con relleno de ganache, crema suave y decoración artesanal. Ideal para cumpleaños, reuniones y eventos especiales.',
         images: ['torta-1.jpeg', 'torta-2.jpeg'],
-        prices: [
-          ['Chica - 18cm de diámetro rinde para 10/15 personas', '$60.000'],
-          ['Mediana - 22cm de diámetro rinde para 20 personas', '$70.000'],
-          ['Grande - 24cm de diámetro rinde para 25 personas', '$76.000']
-        ]
+        sizes: []
       },
       redVelvet: {
         title: 'Red Velvet',
         description: 'Torta húmeda y aterciopelada, con un sabor sutil a cacao y un relleno de cream cheese.',
         images: ['redVelvet1.jpeg', 'redVelvet2.jpeg'],
-        prices: [
-          ['Chica - 18cm de diámetro rinde para 10/15 personas', '$60.000'],
-          ['Mediana - 22cm de diámetro rinde para 20 personas', '$66.000'],
-          ['Grande - 24cm de diámetro rinde para 25 personas', '$73.000']
-        ]
-      },
-      ricota: {
-        title: 'Torta de ricota',
-        description: 'Base de masa sablée con relleno cremoso de ricota.',
-        images: ['ricota1.jpeg', 'ricota2.jpeg'],
-        prices: [
-          ['24cm de diámetro', '$60.000']
-        ]
-      },
-      manzana: {
-        title: 'Crumble de Manzana',
-        description: 'Base de masa sablé y un relleno de manzanas suaves especiadas.',
-        images: ['manzana1.jpeg', 'manzana2.jpeg', 'manzana3.jpeg'],
-        prices: [
-          ['24cm de diámetro', '$']
-        ]
+        sizes: []
       },
       brownie: {
         title: 'Brownie',
         description: 'Base de brownie con dulce de leche, crema batida y frutos rojos/frutillas',
         images: ['brownie1.jpeg'],
-        prices: [
-          ['.', '$']
-        ]
+        sizes: []
       },
       scondequeso: {
         title: 'Scon de queso',
         images: ['sconqueso1.jpeg', 'sconqueso2.jpeg'],
-        prices: [
-          ['.', '$']
-        ]
+        sizes: []
       },
       budines: {
         title: 'Budines',
+        sizesTitle: 'Sabores',
         images: ['budinLimon1.jpeg'],
-        prices: [
-          ['Budin de limón', '$'],
-          ['Budin de Banana', '$'],
-          ['Budin de mandarina', '$']
-
+        sizes: [
+          'Budin de limón',
+          'Budin de Banana',
+          'Budin de mandarina'
         ]
       },
       tortaVainilla: {
         title: 'Torta Matilda',
         description: 'Bizcochuelo húmedo con sabor intenso a chocolate y relleno con una ganache suave de chocolate semi amargo y cubierta con una más intensa',
         images: ['Matilda1.jpg', 'Matilda2.jpg', 'Matilda3.jpg'],
-        prices: [
-          ['Chica - 20cm de diámetro rinde para 10/15 personas', '$60.000'],
-          ['Mediana - 22cm de diámetro rinde para 20 personas', '$66.000'],
-          ['Grande - 24cm de diámetro rinde para 25 personas', '$73.000']
-        ]
+        sizes: []
       },
       tortaCumple: {
         title: 'Key Lime Pie',
@@ -995,29 +1087,27 @@
         images: [
           'KeylimePie.jpg'
         ],
-        prices: [
-          ['24cm de diámetro', '$47.000']
-        ]
+        sizes: []
       },
       tiramisu: {
         title: 'Tiramisú',
         images: [
           'tiramisu1.jpeg'
         ],
-        prices: [
-          ['Porción', '$']
+        sizes: [
+          'Porción'
         ]
       },
       postreLimon: {
         title: 'Postre de Limón',
         description: 'Capas de galletitas de vainilla con una mousse de limón decorada con chocolate rallado.',
         images: [
-          'limon1.jpeg',
+          'limon3.jpg',
           'limon2.jpeg'
         ],
-        prices: [
-          ['Individual', '$'],
-          ['Para compartir rinde hasta 15 porciones', '$']
+        sizes: [
+          'Individual',
+          'Para compartir rinde hasta 15 porciones'
         ]
       },
       cafe: {
@@ -1027,10 +1117,10 @@
           'cafe-1.jpg',
           'cafe-2.jpg'
         ],
-        prices: [
-          ['1', '$1'],
-          ['2', '$2'],
-          ['3', '$3']
+        sizes: [
+          '1',
+          '2',
+          '3'
         ]
       },
             Chocotorta: {
@@ -1039,9 +1129,7 @@
         images: [
           '.jpg'
         ],
-        prices: [
-          ['Para compartir rinde hasta 20 porciones', '$']
-        ]
+        sizes: []
       },
             Cheesecake: {
         title: 'Cheesecake',
@@ -1050,20 +1138,15 @@
           'cheescake1.jpeg',
           'cheescake2.jpeg'
         ],
-        prices: [
-          ['', '$']
-        ]
+        sizes: []
       },
             Marquise: {
         title: 'Marquise',
         description: 'Base húmeda de chocolate, decorada con dulce de leche y crema batida.',
         images: [
-          'marquise1.jpeg',
-          'marquise2.jpeg'
+          'marquise3.jpg'
         ],
-        prices: [
-          ['', '$']
-        ]
+        sizes: []
       },
             bananaSplit: {
         title: 'Torta Banana Split',
@@ -1071,22 +1154,44 @@
         images: [
           '.jpg'
         ],
-        prices: [
-          ['', '$']
-        ]
+        sizes: []
       },
-            sableAlmendras: {
-        title: 'Torta Sablé de almendras',
-        description: 'Tres capas de masa sablé con almendras trituradas y rellena de dulce de leche, crema batida y frutos rojos/frutillas.',
+      chaja: {
+        title: 'Torta Chajá',
+        description: 'Bizcochuelo de vainilla con crema chantilly, duraznos y merengue crocante, cubierta con crema y trozos de merengue.',
         images: [
-          '.jpg'
+          'chaja1.jpg'
         ],
-        prices: [
-          ['', '$']
-        ]
+        sizes: []
+      },
+      tortaBrownie: {
+        title: 'Torta Brownie',
+        description: 'Base húmeda de brownie con dulce de leche, crema batida y frutillas frescas.',
+        images: [
+          'tortaBrownie1.jpg'
+        ],
+        sizes: []
+      },
+      maracuya: {
+        title: 'Tarta de maracuyá',
+        description: 'Base de masa sablé con un relleno cremoso de maracuyá, fresco y levemente ácido.',
+        images: [
+          'maracuya1.jpg'
+        ],
+        sizes: []
       }
 
     };
+
+    // Si una foto todavía no existe, mostrar el logo en su lugar
+    function usePlaceholder(img) {
+      if (!img.src.endsWith('logo.jpeg')) img.src = 'logo.jpeg';
+    }
+
+    document.querySelectorAll('.product-card img, #sliderImage').forEach(img => {
+      img.addEventListener('error', () => usePlaceholder(img));
+      if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) usePlaceholder(img);
+    });
 
     const overlay = document.getElementById('overlay');
     const productPanel = document.getElementById('productPanel');
@@ -1095,7 +1200,9 @@ let currentIndex = 0;
 const sliderImage = document.getElementById('sliderImage');
     const panelTitle = document.getElementById('panelTitle');
     const panelDescription = document.getElementById('panelDescription');
-    const priceTable = document.getElementById('priceTable');
+    const sizesBox = document.getElementById('sizesBox');
+    const sizesTitle = document.getElementById('sizesTitle');
+    const sizesList = document.getElementById('sizesList');
 
     function openProduct(productId) {
       const product = products[productId];
@@ -1108,9 +1215,9 @@ const sliderImage = document.getElementById('sliderImage');
       panelTitle.textContent = product.title;
       panelDescription.textContent = product.description;
 
-      priceTable.innerHTML = product.prices
-        .map(price => `<tr><td>${price[0]}</td><td>${price[1]}</td></tr>`)
-        .join('');
+      sizesTitle.textContent = product.sizesTitle || 'Tamaños';
+      sizesList.innerHTML = product.sizes.map(size => `<li>${size}</li>`).join('');
+      sizesBox.hidden = product.sizes.length === 0;
 
       overlay.classList.add('active');
       productPanel.classList.add('active');
