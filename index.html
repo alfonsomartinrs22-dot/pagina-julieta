@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Julieta Siragusa Bakery</title>
   <meta name="description" content="Julieta Siragusa Bakery. Tortas, postres y cafetería artesanal." />
+  <meta name="theme-color" content="#f6c9d5" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Julieta Siragusa Bakery" />
+  <meta property="og:description" content="Pastelería artesanal: tortas, postres y bakery. Encargá tu torta con 48hs de anticipación." />
+  <link rel="icon" href="logo.jpeg" />
+  <link rel="apple-touch-icon" href="logo.jpeg" />
 
   <style>
     * {
@@ -514,6 +520,80 @@
       border-bottom: none;
     }
 
+    /* Que el encabezado fijo no tape el título al ir a una sección */
+    section,
+    .box {
+      scroll-margin-top: 90px;
+    }
+
+    .product-card:focus-visible,
+    .btn:focus-visible,
+    .arrow:focus-visible,
+    .close-btn:focus-visible {
+      outline: 3px solid var(--rose);
+      outline-offset: 3px;
+    }
+
+    .slider img {
+      touch-action: pan-y;
+    }
+
+    .arrow[hidden] {
+      display: none;
+    }
+
+    .dots {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+    }
+
+    .dots button {
+      width: 9px;
+      height: 9px;
+      padding: 0;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.65);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+    }
+
+    .dots button.active {
+      background: var(--brown);
+    }
+
+    .panel-order {
+      display: block;
+      text-align: center;
+      margin-top: 22px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 150;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #25d366;
+      color: var(--white);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+      transition: transform 0.2s;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.06);
+    }
+
     @media (max-width: 980px) {
       .hero,
       .faq-contact-grid {
@@ -579,21 +659,38 @@
         padding: 13px 14px;
       }
 
+      /* En el celular, Tortas / Postres / Bakery van directo en el menú */
+      .dropdown-btn {
+        display: none;
+      }
+
       .dropdown-menu {
         position: static;
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
-        display: none;
+        display: block;
         min-width: 100%;
+        background: none;
+        border: none;
         box-shadow: none;
-        border-radius: 14px;
-        margin-top: 4px;
+        border-radius: 0;
       }
 
-      .dropdown:hover .dropdown-menu,
-      .dropdown:focus-within .dropdown-menu {
-        display: block;
+      .dropdown-menu a {
+        padding: 13px 14px;
+      }
+
+      section,
+      .box {
+        scroll-margin-top: 76px;
+      }
+
+      .whatsapp-float {
+        right: 14px;
+        bottom: 14px;
+        width: 52px;
+        height: 52px;
       }
 
       .hero {
@@ -754,6 +851,8 @@
       }
     }
   </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Birthstone&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -810,8 +909,8 @@
       </div>
 
       <div class="catalogo">
-        <article class="product-card" onclick="openProduct('tortaChocolate')">
-          <img src="torta-1.jpeg" style="object-position: 50% 70%" alt="Torta chocolate" />
+        <article class="product-card" tabindex="0" role="button" onclick="openProduct('tortaChocolate')">
+          <img loading="lazy" decoding="async" src="torta-1.jpeg" style="object-position: 50% 70%" alt="Carrot Cake" />
           <div class="product-info">
             <h3>Carrot Cake</h3>
             <p>Torta húmeda y especiada con una miga suave y dulce, rellena con cream cheese que le aporta un toque ácido equilibrando la dulzura.</p>
@@ -819,81 +918,81 @@
           </div>
         </article>
 
-        <article class="product-card" onclick="openProduct('tortaVainilla')">
-          <img src="Matilda1.jpg" alt="Torta vainilla y frutos rojos" />
+        <article class="product-card" tabindex="0" role="button" onclick="openProduct('tortaVainilla')">
+          <img loading="lazy" decoding="async" src="Matilda1.jpg" alt="Torta Matilda" />
           <div class="product-info">
             <h3>Torta Matilda</h3>
-            <p>Bizcochuelo suave de vainilla, crema y frutos rojos frescos.</p>
+            <p>Bizcochuelo húmedo de chocolate, relleno con ganache suave de chocolate semiamargo y cubierto con una más intensa.</p>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
 
-        <article class="product-card" onclick="openProduct('tortaCumple')">
-          <img src="KeylimePie.jpg" alt="Key Lime Pie" />
+        <article class="product-card" tabindex="0" role="button" onclick="openProduct('tortaCumple')">
+          <img loading="lazy" decoding="async" src="KeylimePie.jpg" alt="Key Lime Pie" />
           <div class="product-info">
             <h3>Key Lime Pie</h3>
             <p>Base crocante de vainilla y un relleno cremoso de lima, con el equilibrio perfecto entre lo dulce y cítrico, decorada con crema batida.</p>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
-        <article class="product-card" onclick="openProduct('redVelvet')">
-          <img src="redVelvet1.jpeg" alt="Red Velvet" />
+        <article class="product-card" tabindex="0" role="button" onclick="openProduct('redVelvet')">
+          <img loading="lazy" decoding="async" src="redVelvet1.jpeg" alt="Red Velvet" />
           <div class="product-info">
             <h3>Red Velvet</h3>
-            <p>Torta húmeda y especiada con una miga suave y dulce, rellena con cream cheese que le aporta un toque ácido equilibrando la dulzura.</p>
+            <p>Torta húmeda y aterciopelada, con un sabor sutil a cacao y un relleno de cream cheese.</p>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
-        <article class="product-card" onclick="openProduct('Chocotorta')">
-          <img src=".jpeg" alt="Chocotorta" />
+        <article class="product-card" tabindex="0" role="button" onclick="openProduct('Chocotorta')">
+          <img loading="lazy" decoding="async" src="logo.jpeg" alt="Chocotorta" />
           <div class="product-info">
             <h3>Chocotorta</h3>
             <p>Capas de galletitas y un relleno de dulce de leche con queso crema.</p>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
-        <article class="product-card" onclick="openProduct('Cheesecake')">
-          <img src="cheescake1.jpeg" style="object-position: 50% 75%" alt="Cheesecake" />
+        <article class="product-card" tabindex="0" role="button" onclick="openProduct('Cheesecake')">
+          <img loading="lazy" decoding="async" src="cheescake1.jpeg" style="object-position: 50% 75%" alt="Cheesecake" />
           <div class="product-info">
             <h3>Cheesecake</h3>
-            <p>Base de vainilla, con un relleno cremoso de queso crema y una reducción de frutillas</p>
+            <p>Base de vainilla, con un relleno cremoso de queso crema y una reducción de frutillas.</p>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
-        <article class="product-card" onclick="openProduct('Marquise')">
-          <img src="marquise3.jpg" style="object-position: 45% 78%" alt="Marquise" />
+        <article class="product-card" tabindex="0" role="button" onclick="openProduct('Marquise')">
+          <img loading="lazy" decoding="async" src="marquise3.jpg" style="object-position: 45% 78%" alt="Marquise" />
           <div class="product-info">
             <h3>Marquise</h3>
             <p>Base húmeda de chocolate, decorada con dulce de leche y crema batida.</p>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
-        <article class="product-card" onclick="openProduct('bananaSplit')">
-          <img src=".jpeg" alt="bananaSplit" />
+        <article class="product-card" tabindex="0" role="button" onclick="openProduct('bananaSplit')">
+          <img loading="lazy" decoding="async" src="logo.jpeg" alt="Torta Banana Split" />
           <div class="product-info">
             <h3>Torta Banana Split</h3>
             <p>Base de galletitas de vainilla, con dulce de leche, crema de avellanas, bananas y crema batida.</p>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
-        <article class="product-card" onclick="openProduct('chaja')">
-          <img src="chaja1.jpg" style="object-position: 55% 55%" alt="Torta Chajá" />
+        <article class="product-card" tabindex="0" role="button" onclick="openProduct('chaja')">
+          <img loading="lazy" decoding="async" src="chaja1.jpg" style="object-position: 55% 55%" alt="Torta Chajá" />
           <div class="product-info">
             <h3>Torta Chajá</h3>
             <p>Bizcochuelo de vainilla con crema chantilly, duraznos y merengue crocante, cubierta con crema y trozos de merengue.</p>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
-        <article class="product-card" onclick="openProduct('tortaBrownie')">
-          <img src="tortaBrownie1.jpg" style="object-position: 40% 85%" alt="Torta Brownie" />
+        <article class="product-card" tabindex="0" role="button" onclick="openProduct('tortaBrownie')">
+          <img loading="lazy" decoding="async" src="tortaBrownie1.jpg" style="object-position: 40% 85%" alt="Torta Brownie" />
           <div class="product-info">
             <h3>Torta Brownie</h3>
             <p>Base húmeda de brownie con dulce de leche, crema batida y frutillas frescas.</p>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
-        <article class="product-card" onclick="openProduct('maracuya')">
-          <img src="maracuya1.jpg" alt="Tarta de maracuyá" />
+        <article class="product-card" tabindex="0" role="button" onclick="openProduct('maracuya')">
+          <img loading="lazy" decoding="async" src="maracuya1.jpg" alt="Tarta de maracuyá" />
           <div class="product-info">
             <h3>Tarta de maracuyá</h3>
             <p>Base de masa sablé con un relleno cremoso de maracuyá, fresco y levemente ácido.</p>
@@ -910,15 +1009,15 @@
       </div>
 
       <div class="catalogo">
-        <article class="product-card" onclick="openProduct('tiramisu')">
-          <img src="tiramisu1.jpeg" style="object-position: 50% 75%" alt="Tiramisú" />
+        <article class="product-card" tabindex="0" role="button" onclick="openProduct('tiramisu')">
+          <img loading="lazy" decoding="async" src="tiramisu1.jpeg" style="object-position: 50% 75%" alt="Tiramisú" />
           <div class="product-info">
             <h3>Tiramisú</h3>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
-        <article class="product-card" onclick="openProduct('postreLimon')">
-          <img src="limon3.jpg" style="object-position: 50% 85%" alt="Postre de Limón" />
+        <article class="product-card" tabindex="0" role="button" onclick="openProduct('postreLimon')">
+          <img loading="lazy" decoding="async" src="limon3.jpg" style="object-position: 50% 85%" alt="Postre de Limón" />
           <div class="product-info">
             <h3>Postre de limón</h3>
             <p>Capas de galletitas de vainilla con una mousse de limón decorada con chocolate rallado.</p>
@@ -935,23 +1034,23 @@
       </div>
 
       <div class="catalogo">
-        <article class="product-card" onclick="openProduct('brownie')">
-          <img src="brownie1.jpeg" alt="Brownie" />
+        <article class="product-card" tabindex="0" role="button" onclick="openProduct('brownie')">
+          <img loading="lazy" decoding="async" src="brownie1.jpeg" alt="Brownie" />
           <div class="product-info">
             <h3>Brownie</h3>
-            <p>Base de brownie con dulce de leche, crema batida y frutos rojos/frutilla</p>
+            <p>Brownie húmedo de chocolate, con costra crocante.</p>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
-        <article class="product-card" onclick="openProduct('scondequeso')">
-          <img src="sconqueso1.jpeg" alt="Scon de queso" />
+        <article class="product-card" tabindex="0" role="button" onclick="openProduct('scondequeso')">
+          <img loading="lazy" decoding="async" src="sconqueso1.jpeg" alt="Scon de queso" />
           <div class="product-info">
             <h3>Scon de queso</h3>
             <span class="ver-mas">Ver detalle</span>
           </div>
         </article>
-        <article class="product-card" onclick="openProduct('budines')">
-          <img src="budinLimon1.jpeg" alt="Budines" />
+        <article class="product-card" tabindex="0" role="button" onclick="openProduct('budines')">
+          <img loading="lazy" decoding="async" src="budinLimon1.jpeg" alt="Budines" />
           <div class="product-info">
             <h3>Budines</h3>
             <span class="ver-mas">Ver detalle</span>
@@ -974,8 +1073,8 @@
         <h2>Contacto</h2>
         <p>Escribinos para consultar disponibilidad, sabores y presupuestos personalizados.</p>
         <div class="contact-buttons">
-          <a class="btn" href="https://wa.me/5491168363955" target="_blank">WhatsApp</a>
-          <a class="btn btn-secondary" href="https://www.instagram.com/jusiragusa.bakery" target="_blank">Instagram</a>
+          <a class="btn btn-whatsapp" href="https://wa.me/5491168363955" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn-secondary" href="https://www.instagram.com/jusiragusa.bakery" target="_blank" rel="noopener">Instagram</a>
         </div>
       </div>
     </section>
@@ -983,14 +1082,15 @@
 
   <div class="overlay" id="overlay" onclick="closeProduct()"></div>
 
-  <aside class="product-panel" id="productPanel">
+  <aside class="product-panel" id="productPanel" role="dialog" aria-modal="true" aria-labelledby="panelTitle">
     <div class="panel-content">
-      <button class="close-btn" onclick="closeProduct()">×</button>
+      <button class="close-btn" onclick="closeProduct()" aria-label="Cerrar">×</button>
 
-      <div class="slider">
-        <button class="arrow left" onclick="prevImage()">❮</button>
+      <div class="slider" id="slider">
+        <button class="arrow left" onclick="prevImage()" aria-label="Foto anterior">❮</button>
         <img id="sliderImage" src="" alt="" />
-        <button class="arrow right" onclick="nextImage()">❯</button>
+        <button class="arrow right" onclick="nextImage()" aria-label="Foto siguiente">❯</button>
+        <div class="dots" id="sliderDots"></div>
       </div>
 
       <h2 id="panelTitle"></h2>
@@ -1000,8 +1100,14 @@
         <h3 id="sizesTitle">Tamaños</h3>
         <ul id="sizesList"></ul>
       </div>
+
+      <a class="btn btn-whatsapp panel-order" id="panelOrder" href="https://wa.me/5491168363955" target="_blank" rel="noopener">Consultar por WhatsApp</a>
     </div>
   </aside>
+
+  <a class="whatsapp-float" href="https://wa.me/5491168363955" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.8h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88zm8.41-18.3A11.81 11.81 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41z"/></svg>
+  </a>
 
   <footer>
     <p>© 2026 Julieta Siragusa Bakery. Todos los derechos reservados.</p>
@@ -1044,8 +1150,8 @@
     const products = {
       tortaChocolate: {
         title: 'Carrot Cake',
-        description: 'Torta húmeda de chocolate con relleno de ganache, crema suave y decoración artesanal. Ideal para cumpleaños, reuniones y eventos especiales.',
-        images: ['torta-1.jpeg', 'torta-2.jpeg'],
+        description: 'Torta húmeda y especiada con una miga suave y dulce, rellena con cream cheese que le aporta un toque ácido equilibrando la dulzura.',
+        images: ['torta-1.jpeg'],
         sizes: []
       },
       redVelvet: {
@@ -1056,7 +1162,7 @@
       },
       brownie: {
         title: 'Brownie',
-        description: 'Base de brownie con dulce de leche, crema batida y frutos rojos/frutillas',
+        description: 'Brownie húmedo de chocolate, con costra crocante.',
         images: ['brownie1.jpeg'],
         sizes: []
       },
@@ -1070,15 +1176,15 @@
         sizesTitle: 'Sabores',
         images: ['budinLimon1.jpeg'],
         sizes: [
-          'Budin de limón',
-          'Budin de Banana',
-          'Budin de mandarina'
+          'Budín de limón',
+          'Budín de banana',
+          'Budín de mandarina'
         ]
       },
       tortaVainilla: {
         title: 'Torta Matilda',
-        description: 'Bizcochuelo húmedo con sabor intenso a chocolate y relleno con una ganache suave de chocolate semi amargo y cubierta con una más intensa',
-        images: ['Matilda1.jpg', 'Matilda2.jpg', 'Matilda3.jpg'],
+        description: 'Bizcochuelo húmedo con sabor intenso a chocolate, relleno con una ganache suave de chocolate semiamargo y cubierto con una más intensa.',
+        images: ['Matilda1.jpg', 'Matilda2.jpg'],
         sizes: []
       },
       tortaCumple: {
@@ -1110,28 +1216,15 @@
           'Para compartir rinde hasta 15 porciones'
         ]
       },
-      cafe: {
-        title: '.',
-        description: '.',
-        images: [
-          'cafe-1.jpg',
-          'cafe-2.jpg'
-        ],
-        sizes: [
-          '1',
-          '2',
-          '3'
-        ]
-      },
-            Chocotorta: {
+      Chocotorta: {
         title: 'Chocotorta',
         description: 'Capas de galletitas y un relleno de dulce de leche con queso crema.',
         images: [
-          '.jpg'
+          'logo.jpeg'
         ],
         sizes: []
       },
-            Cheesecake: {
+      Cheesecake: {
         title: 'Cheesecake',
         description: 'Base de vainilla, con un relleno cremoso de queso crema y una reducción de frutillas.',
         images: [
@@ -1140,7 +1233,7 @@
         ],
         sizes: []
       },
-            Marquise: {
+      Marquise: {
         title: 'Marquise',
         description: 'Base húmeda de chocolate, decorada con dulce de leche y crema batida.',
         images: [
@@ -1148,11 +1241,11 @@
         ],
         sizes: []
       },
-            bananaSplit: {
+      bananaSplit: {
         title: 'Torta Banana Split',
         description: 'Base de galletitas de vainilla, con dulce de leche, crema de avellanas, bananas y crema batida.',
         images: [
-          '.jpg'
+          'logo.jpeg'
         ],
         sizes: []
       },
@@ -1180,7 +1273,6 @@
         ],
         sizes: []
       }
-
     };
 
     // Si una foto todavía no existe, mostrar el logo en su lugar
@@ -1193,59 +1285,114 @@
       if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) usePlaceholder(img);
     });
 
+    const WHATSAPP = '5491168363955';
     const overlay = document.getElementById('overlay');
     const productPanel = document.getElementById('productPanel');
-    let currentImages = [];
-let currentIndex = 0;
-const sliderImage = document.getElementById('sliderImage');
+    const sliderImage = document.getElementById('sliderImage');
+    const sliderDots = document.getElementById('sliderDots');
+    const arrows = document.querySelectorAll('.slider .arrow');
     const panelTitle = document.getElementById('panelTitle');
     const panelDescription = document.getElementById('panelDescription');
     const sizesBox = document.getElementById('sizesBox');
     const sizesTitle = document.getElementById('sizesTitle');
     const sizesList = document.getElementById('sizesList');
+    const panelOrder = document.getElementById('panelOrder');
+    let currentImages = [];
+    let currentIndex = 0;
+    let lastFocused = null;
 
     function openProduct(productId) {
       const product = products[productId];
       if (!product) return;
 
+      lastFocused = document.activeElement;
       currentImages = product.images;
-      currentIndex = 0;
-      sliderImage.src = currentImages[0];
+      sliderImage.alt = product.title;
+      sliderDots.innerHTML = currentImages.length > 1
+        ? currentImages.map((_, i) => `<button type="button" aria-label="Foto ${i + 1}" onclick="showImage(${i})"></button>`).join('')
+        : '';
+      arrows.forEach(arrow => { arrow.hidden = currentImages.length < 2; });
+      showImage(0);
 
       panelTitle.textContent = product.title;
-      panelDescription.textContent = product.description;
+      panelDescription.textContent = product.description || '';
+      panelDescription.hidden = !product.description;
 
       sizesTitle.textContent = product.sizesTitle || 'Tamaños';
       sizesList.innerHTML = product.sizes.map(size => `<li>${size}</li>`).join('');
       sizesBox.hidden = product.sizes.length === 0;
 
+      const message = `¡Hola Julieta! Quería consultar por: ${product.title}`;
+      panelOrder.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
+
       overlay.classList.add('active');
       productPanel.classList.add('active');
+      productPanel.scrollTop = 0;
       document.body.style.overflow = 'hidden';
+      setTimeout(() => productPanel.querySelector('.close-btn').focus({ preventScroll: true }), 50);
+
+      // Permite cerrar el detalle con el botón "atrás" del celular
+      if (!(history.state && history.state.panel)) history.pushState({ panel: true }, '');
     }
 
-    function closeProduct() {
+    function closeProduct(fromHistory) {
+      if (!productPanel.classList.contains('active')) return;
       overlay.classList.remove('active');
       productPanel.classList.remove('active');
       document.body.style.overflow = '';
+      if (lastFocused) lastFocused.focus({ preventScroll: true });
+      if (fromHistory !== true && history.state && history.state.panel) history.back();
+    }
+
+    window.addEventListener('popstate', () => closeProduct(true));
+    // Al cerrar el detalle la página se queda donde estaba
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+    function showImage(index) {
+      if (!currentImages.length) return;
+      currentIndex = (index + currentImages.length) % currentImages.length;
+      sliderImage.src = currentImages[currentIndex];
+      sliderDots.querySelectorAll('button').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
     }
 
     function nextImage() {
-      if (!currentImages.length) return;
-      currentIndex = (currentIndex + 1) % currentImages.length;
-      sliderImage.src = currentImages[currentIndex];
+      showImage(currentIndex + 1);
     }
 
     function prevImage() {
-      if (!currentImages.length) return;
-      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-      sliderImage.src = currentImages[currentIndex];
+      showImage(currentIndex - 1);
     }
 
+    // Deslizar con el dedo para cambiar de foto
+    let touchStartX = null;
+    sliderImage.addEventListener('touchstart', event => {
+      touchStartX = event.touches[0].clientX;
+    }, { passive: true });
+    sliderImage.addEventListener('touchend', event => {
+      if (touchStartX === null) return;
+      const deltaX = event.changedTouches[0].clientX - touchStartX;
+      touchStartX = null;
+      if (Math.abs(deltaX) < 40) return;
+      if (deltaX < 0) nextImage(); else prevImage();
+    });
+
+    // Abrir las tarjetas también con el teclado
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          card.click();
+        }
+      });
+    });
+
     document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        closeProduct();
-      }
+      if (!productPanel.classList.contains('active')) return;
+      if (event.key === 'Escape') closeProduct();
+      if (event.key === 'ArrowRight') nextImage();
+      if (event.key === 'ArrowLeft') prevImage();
     });
   </script>
 </body>
